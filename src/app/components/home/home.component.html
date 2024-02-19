@@ -1,0 +1,27 @@
+<div class="full-page-container">
+    <div class="title-page-container">
+        <h1>CineMille</h1>
+    </div>
+    <div class="input-container">
+        <div class="input-row">
+            <label for="startDate">Da: </label>
+            <input type="date" id="startDate" [(ngModel)]="startDate" (input)="getDataFromService()">
+        </div>
+        <div class="input-row">
+            <label for="endDate">A: </label>
+            <input type="date" id="endDate" [(ngModel)]="endDate" (input)="getDataFromService()">
+        </div>
+        <button (click)="clearDates()">Clear filters</button>
+    </div>
+    <div class="film-grid">
+        <div *ngFor="let film of films" class="film">
+            <p class="film-title">{{film.name}}</p>
+            <img src="../../../assets/images/film.jpeg" alt="Film Picture">
+            <div class="film-info">
+                <p>{{film.room.roomName}}</p>
+                <p *ngIf="film.room.isIMax">IMAX</p>
+                <p>{{film.startDate}} - {{film.endDate}}</p>
+            </div>
+        </div>
+    </div>
+</div>
